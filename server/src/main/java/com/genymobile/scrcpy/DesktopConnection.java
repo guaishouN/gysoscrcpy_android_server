@@ -87,12 +87,18 @@ public final class DesktopConnection implements Closeable {
             } else {
                 if (video) {
                     videoSocket = connect(socketName);
+                    byte[] videoHeaderNal = "VIDEO".getBytes(StandardCharsets.UTF_8);
+                    videoSocket.getOutputStream().write(videoHeaderNal);
                 }
                 if (audio) {
                     audioSocket = connect(socketName);
+                    byte[] audioHeaderNal = "AUDIO".getBytes(StandardCharsets.UTF_8);
+                    audioSocket.getOutputStream().write(audioHeaderNal);
                 }
                 if (control) {
                     controlSocket = connect(socketName);
+                    byte[] ctrlHeaderNal = "CTRL_".getBytes(StandardCharsets.UTF_8);
+                    controlSocket.getOutputStream().write(ctrlHeaderNal);
                 }
             }
         } catch (IOException | RuntimeException e) {
