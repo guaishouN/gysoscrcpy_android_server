@@ -19,17 +19,18 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // 设置布局
+        setContentView(R.layout.activity_login);
         instance = this; // 设置静态实例为当前实例
         check_token(); // 检查token
     }
 
     // 执行登录操作
     public static void doLogin() {
-        Log.d("TAG", "login"); // 打印登录信息
+        Log.d("TAG", "login");
         Context context = instance.getApplication(); // 获取应用上下文
         context.getAssets(); // 获取应用资源
     }
+
     // 检查token是否有效
     public static void check_token() {
         ExecutorService exe = Executors.newCachedThreadPool(); // 创建线程池
