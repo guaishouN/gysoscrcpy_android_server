@@ -30,4 +30,16 @@ public class LoginActivity extends Activity {
         Context context = instance.getApplication(); // 获取应用上下文
         context.getAssets(); // 获取应用资源
     }
+    // 检查token是否有效
+    public static void check_token() {
+        ExecutorService exe = Executors.newCachedThreadPool(); // 创建线程池
+        exe.submit(() -> {
+            Calendar now = Calendar.getInstance(); // 获取当前时间
+            now.add(Calendar.DAY_OF_YEAR, -2); // 减去2天
+            if (now.after(Utils.getTokenCreateTime())) { // 如果当前时间在token创建时间之后
+                Log.i("login", "Token已经过期重新登录"); // 打印token过期信息
+                doLogin(); // 执行登录操作
+            }
+        });
+    }
 }
