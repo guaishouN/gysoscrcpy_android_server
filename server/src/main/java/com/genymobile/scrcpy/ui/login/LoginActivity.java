@@ -8,6 +8,7 @@ import com.genymobile.scrcpy.R;
 public class LoginActivity extends Activity {
     private static LoginActivity instance;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
